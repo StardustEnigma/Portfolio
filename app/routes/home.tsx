@@ -1,16 +1,41 @@
-import DotGrid from '../welcome/welcome';
-
-export function meta() {
-  return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
-  ];
-}
+import DotGrid from "../welcome/welcome";
+import TextType from "../components/type";
+import Navbar from "../components/navbar";
+import ShinyText from "../components/shiny";
 
 export default function Home() {
   return (
-    <div className="h-screen w-screen">
-      <DotGrid />
+    <div className="relative h-screen w-screen overflow-hidden bg-black text-white">
+      {/* Background grid */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <DotGrid />
+      </div>
+
+      {/* Navbar - place at top with fixed or relative positioning */}
+      <div className="relative z-20">
+        <Navbar />
+      </div>
+
+      {/* Centered animated text and shiny text */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 z-10 px-4 text-center pointer-events-auto">
+        <TextType
+          text={[
+            "Welcome to my portfolio.",
+            "I'm Atharva.",
+            "Web Developer | Designer | Engineer.",
+          ]}
+          className="text-3xl md:text-5xl font-bold"
+          typingSpeed={60}
+          deletingSpeed={40}
+          pauseDuration={1800}
+          showCursor
+          textColors={["#ffffff", "#38bdf8", "#f472b6"]}
+          cursorBlinkDuration={0.5}
+        />
+
+        {/* Shiny text below typing effect */}
+        <ShinyText text="Building intelligent backends & machine learning projects that solve real problems." />
+      </div>
     </div>
   );
 }
