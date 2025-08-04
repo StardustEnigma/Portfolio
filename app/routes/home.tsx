@@ -2,7 +2,6 @@ import DotGrid from "../welcome/welcome";
 import TextType from "../components/type";
 import Navbar from "../components/navbar";
 import ShinyText from "../components/shiny";
-
 export default function Home() {
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black text-white">
