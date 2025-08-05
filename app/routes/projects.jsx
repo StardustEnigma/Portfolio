@@ -13,6 +13,9 @@ export default function Projects() {
       <main className="flex-grow flex items-center justify-center px-4 pt-20">
         <TrueFocus sentence="Coming Soon" />
       </main>
+   
+
     </div>
+    
   );
 }
