@@ -56,11 +56,13 @@ export default function About() {
 
 
         {/* About Paragraph with ML and Fintech focus */}
-        <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-lg shadow-2xl mb-10 border border-white/10 transition-all duration-300 hover:shadow-cyan-500/30 max-w-xl">
-          <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed">
-            As a Computer Science student at RBU Nagpur, my strongest interests are in machine learning and the fintech space. I’m building my expertise to solve financial and tech challenges using intelligent models and data-driven solutions. Alongside this, I focus on backend development, scalable architectures, and reliable system design.
-          </p>
-        </div>
+      <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-lg shadow-2xl mb-10 border border-white/10 transition-all duration-300 hover:shadow-cyan-500/30 max-w-xl">
+  <p className="text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] text-gray-200 leading-relaxed transition-colors duration-300 hover:text-white cursor-default">
+    As a <span className="text-cyan-400 font-semibold">Computer Science</span> student, my strongest interests are in <span className="text-violet-400 font-semibold">machine learning</span> and the <span className="text-cyan-300 font-semibold">fintech</span> space. I'm building my expertise to solve financial and tech challenges using <span className="text-violet-300 font-semibold">intelligent models</span> and <span className="text-violet-300 font-semibold">data-driven solutions</span>. Alongside this, I focus on <span className="text-cyan-300 font-semibold">backend development</span>, <span className="text-cyan-300 font-semibold">scalable architectures</span>, and <span className="text-cyan-300 font-semibold">reliable system design</span>.
+  </p>
+</div>
+
+
 
         {/* Divider */}
         <div className="w-40 h-[3px] mx-auto my-6 bg-gradient-to-r from-cyan-400/70 to-purple-400/60 rounded-full mb-10 shadow-lg" />
