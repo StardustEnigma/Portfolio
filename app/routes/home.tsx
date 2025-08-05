@@ -17,30 +17,32 @@ export default function Home() {
   height={58}
   borderRadius={18}
   borderWidth={0.14}
-  brightness={8}
-  opacity={0.78}
-  blur={18}
+  brightness={0}                 // Increase brightness for glassy look
+  opacity={0}                   // Lower opacity to see dots
+  blur={0}                       // Stronger blur for background
   displace={3}
-  backgroundOpacity={0.12}
-  saturation={1.5}
-  distortionScale={-200}
+  backgroundOpacity={0.0}        // Very low background opacity
+  saturation={1.8}
+  distortionScale={-0.2} // Negative for more distortion
   redOffset={0}
-  greenOffset={8}
-  blueOffset={18}
-  mixBlendMode="screen"
-  className="mx-auto mt-6 shadow-[0_0_10px_rgba(74,58,255,0.4)] border border-[#4A3AFF]/50"
-  style={{ background: "rgba(13, 11, 45, 0.6)" }} // deep navy purple with slight transparency
+  greenOffset={10}
+  blueOffset={20}
+  mixBlendMode="overlay"          // Better blending than 'screen'
+  className="mx-auto mt-6 shadow-[0_0_20px_rgba(74,58,255,0.4)] border border-[#4A3AFF]/30"
 >
   <div className="flex justify-between items-center w-full px-6 text-white">
-    <span className="text-lg font-extrabold tracking-wider">ATHARVA.DEV</span>
+    <span className="text-lg font-extrabold tracking-wider drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+      ATHARVA.DEV
+    </span>
     <nav className="flex gap-8 text-[15px] font-semibold">
-      <a href="/" className="hover:text-[#a8a8ff]">Home</a>
-      <a href="/projects" className="hover:text-[#a8a8ff]">Projects</a>
-      <a href="/about" className="hover:text-[#a8a8ff]">About</a>
-      <a href="/contact" className="hover:text-[#a8a8ff]">Contact</a>
+      <a href="/" className="hover:text-indigo-300 transition-colors">Home</a>
+      <a href="/projects" className="hover:text-indigo-300 transition-colors">Projects</a>
+      <a href="/about" className="hover:text-indigo-300 transition-colors">About</a>
+      <a href="/contact" className="hover:text-indigo-300 transition-colors">Contact</a>
     </nav>
   </div>
 </GlassSurface>
+
 
 
 
