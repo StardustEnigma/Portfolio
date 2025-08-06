@@ -1,94 +1,98 @@
 import Navbar from "../components/Navbar";
 import SplitText from "../components/split";
+import { useRef } from "react";
 
 const skills = [
-  "Python",
-  "Django",
-  "Java",
-  "Git & GitHub",
-  "Tailwind CSS",
-  "React"
+  "Python", "Django", "Java", "Git & GitHub", "Tailwind CSS", "React"
 ];
 
 export default function About() {
+  const skillsRef = useRef(null);
+
+  const scrollToSkills = () => {
+    skillsRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-[#12023a] via-[#1a0940] to-[#24126A] text-white overflow-hidden text-[0.7rem]">
+    <div className="relative w-full min-h-screen bg-gradient-to-br from-[#12023a] via-[#1a0940] to-[#24126A] text-white overflow-x-hidden">
       <Navbar />
-      {/* Background blobs */}
-      <div className="absolute top-0 left-0 w-80 h-80 bg-cyan-400 opacity-20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-500 opacity-20 rounded-full blur-3xl translate-x-1/3 translate-y-2/3 pointer-events-none" />
-      
-      <main className="max-w-3xl mx-auto px-6 pt-24 flex flex-col items-center text-center relative z-10">
-        {/* Name with animation */}
-        <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold flex flex-wrap justify-center gap-3 mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent drop-shadow-2xl">
-          <SplitText
-            text="Hi, I’m"
-            className="text-white drop-shadow"
-            delay={100}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-          />
-          <span className="inline-block">
-            <SplitText
-              text="Atharva Mandle"
-              className="text-[#38bdf8] drop-shadow-glow"
-              delay={700}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="-100px"
-            />
-          </span>
-        </h1>
+      <div
+        className="
+          h-screen snap-y snap-mandatory
+          overflow-y-auto overflow-x-hidden scroll-smooth
+        "
+        style={{ WebkitOverflowScrolling: "touch" }}
+      >
+        {/* Page 1 */}
+        <section className="snap-start min-h-screen w-full flex flex-col justify-center items-center px-4 sm:px-8 pt-28 pb-10 relative">
+          {/* Blobs, adjusted so never too wide */}
+          <div className="pointer-events-none absolute top-0 left-0 w-60 h-60 sm:w-80 sm:h-80 bg-cyan-400 opacity-10 rounded-full blur-3xl" style={{transform:"translate(-33%, -33%)", maxWidth:"100vw"}} />
+          <div className="pointer-events-none absolute bottom-0 right-0 w-60 h-60 sm:w-80 sm:h-80 bg-purple-500 opacity-10 rounded-full blur-3xl" style={{transform:"translate(25%, 25%)", maxWidth:"100vw"}} />
 
-        {/* Tagline in one line */}
-        <p className="text-xs sm:text-sm md:text-base text-cyan-200/80 italic max-w-lg mb-8 font-light whitespace-nowrap overflow-hidden text-ellipsis">
-  Machine Learning ⚡ Fintech Backend Systems
-</p>
-
-
-        {/* About Paragraph with ML and Fintech focus */}
-      <div className="bg-white/10 rounded-2xl p-8 backdrop-blur-lg shadow-2xl mb-10 border border-white/10 transition-all duration-300 hover:shadow-cyan-500/30 max-w-xl">
-  <p className="text-[1.15rem] sm:text-[1.15rem] md:text-[1.15rem] text-gray-200 leading-relaxed transition-colors duration-300 hover:text-white cursor-default">
-    As a <span className="text-cyan-400 font-semibold">Computer Science</span> student, my strongest interests are in <span className="text-violet-400 font-semibold">machine learning</span> and the <span className="text-cyan-300 font-semibold">fintech</span> space. I'm building my expertise to solve financial and tech challenges using <span className="text-violet-300 font-semibold">intelligent models</span> and <span className="text-violet-300 font-semibold">data-driven solutions</span>. Alongside this, I focus on <span className="text-cyan-300 font-semibold">backend development</span>, <span className="text-cyan-300 font-semibold">scalable architectures</span>, and <span className="text-cyan-300 font-semibold">reliable system design</span>.
+          <main className="z-10 flex flex-col items-center text-center w-full">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold flex flex-wrap justify-center gap-2 mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+              <SplitText
+                text="Hi, I’m"
+                className="text-white drop-shadow"
+                delay={100}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                rootMargin="-100px"
+              />
+              <span>
+                <SplitText
+                  text="Atharva Mandle"
+                  className="text-[#38bdf8] drop-shadow-glow"
+                  delay={700}
+                  duration={0.6}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
+                />
+              </span>
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-cyan-200/90 italic max-w-xs sm:max-w-xl mb-7 font-light">
+              Machine Learning ⚡ Fintech Backend Systems
+            </p>
+            <div className="w-full max-w-2xl bg-white/10 rounded-2xl p-7 sm:p-10 md:p-12 backdrop-blur-lg shadow-xl mb-8 border border-white/10 hover:shadow-cyan-500/20 transition duration-300">
+  <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed hover:text-white cursor-default">
+    As a <span className="text-[#ffffff] font-semibold">Computer Science</span> student, my strongest interests are in <span className="text-[#38bdf8] font-semibold">machine learning</span> and the <span className="text-[#f472b6] font-semibold">fintech</span> space. I'm building my expertise to solve financial and tech challenges using <span className="text-[#38bdf8] font-semibold">intelligent models</span> and <span className="text-[#f472b6] font-semibold">data-driven solutions</span>. Alongside this, I focus on <span className="text-[#38bdf8] font-semibold">backend development</span>, <span className="text-[#ffffff] font-semibold">scalable architectures</span>, and <span className="text-[#f472b6] font-semibold">reliable system design</span>.
   </p>
 </div>
 
-
-
-        {/* Divider */}
-        <div className="w-40 h-[3px] mx-auto my-6 bg-gradient-to-r from-cyan-400/70 to-purple-400/60 rounded-full mb-10 shadow-lg" />
-
-        {/* Skills */}
-        <div className="w-full max-w-xl grid grid-cols-2 sm:grid-cols-3 gap-6 text-base sm:text-lg mb-8">
-          {skills.map((skill) => (
-            <div key={skill} className="flex justify-center items-center bg-white/10 p-5 rounded-2xl backdrop-blur-md shadow-lg hover:scale-110 hover:shadow-cyan-400/40 transition-all duration-200 group cursor-pointer font-medium">
-              {skill}
-            </div>
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="mt-10">
-          <a
-            href="https://www.linkedin.com/in/atharva-mandle-5214312aa/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex gap-2 items-center bg-[#38bdf8] text-[#12023a] px-8 py-3 shadow-xl rounded-full font-semibold hover:bg-cyan-300 hover:scale-105 transition-all duration-300 ring-2 ring-cyan-400 group drop-shadow-glow"
-          >
-            <svg className="w-6 h-6 mr-1 text-[#12023a] group-hover:text-[#6e21e5] transition-all" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 3.024H3.554C2.694 3.024 2 3.734 2 4.632v14.736c0 .899.694 1.632 1.554 1.632h16.893c.86 0 1.553-.734 1.553-1.632V4.632c0-.898-.693-1.608-1.553-1.608zM8.829 19H5.672V9.448h3.157V19zM7.25 8.088c-1.017 0-1.693-.681-1.693-1.533 0-.87.7-1.534 1.733-1.534s1.693.664 1.703 1.534c0 .852-.687 1.533-1.743 1.533zm11.504 10.912h-3.157v-4.884c0-1.229-.438-2.07-1.537-2.07-.839 0-1.338.561-1.557 1.1-.079.192-.098.459-.098.728v5.127h-3.156V9.448h3.156v1.246c.418-.646 1.162-1.564 2.834-1.564 2.069 0 3.629 1.354 3.629 4.268V19z"/></svg>
-            Connect with me
-          </a>
-        </div>
-      </main>
+            <button
+              onClick={scrollToSkills}
+              className="px-7 py-2 rounded-full bg-cyan-500 text-[#12023a] font-semibold text-base shadow-md hover:scale-105 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition-all"
+            >View My Skills ↓</button>
+          </main>
+        </section>
+        {/* Page 2 */}
+        <section
+          ref={skillsRef}
+          className="snap-start min-h-screen w-full flex flex-col items-center justify-center px-4 sm:px-8 pt-24 pb-12 relative"
+        >
+          <div className="pointer-events-none absolute top-0 left-0 w-32 h-32 sm:w-56 sm:h-56 bg-cyan-400 opacity-10 rounded-full blur-3xl" style={{transform:"translate(-50%, -50%)", maxWidth:"100vw"}} />
+          <div className="pointer-events-none absolute bottom-0 right-0 w-36 h-36 sm:w-60 sm:h-60 bg-purple-500 opacity-10 rounded-full blur-3xl" style={{transform:"translate(25%, 25%)", maxWidth:"100vw"}} />
+          <h2 className="mb-6 text-2xl sm:text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Skills</h2>
+          <div className="w-full max-w-2xl grid grid-cols-2 sm:grid-cols-3 gap-5 sm:gap-8">
+            {skills.map(skill => (
+              <div
+                key={skill}
+                className="flex justify-center items-center text-center bg-white/10 p-5 sm:p-6 rounded-2xl backdrop-blur-md shadow-lg hover:scale-110 hover:shadow-cyan-400/30 transition duration-200 cursor-pointer font-semibold text-base sm:text-lg"
+              >
+                {skill}
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
