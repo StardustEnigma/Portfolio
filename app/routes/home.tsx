@@ -11,31 +11,43 @@ export default function Home() {
         <DotGrid />
       </div>
 
-      {/* Navbar with extra vertical padding */}
+      {/* Navbar */}
       <div className="relative z-20 py-6">
         <Navbar />
       </div>
 
-      {/* Centered animated text and shiny text with increased gap and font size */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-14 z-10 px-4 text-center pointer-events-auto">
-        <TextType
-          text={[
-            "Welcome to my portfolio.",
-            "I'm Atharva.",
-            "Web Developer | Designer | Engineer.",
-          ]}
-          className="text-4xl md:text-7xl font-bold"
-          typingSpeed={60}
-          deletingSpeed={40}
-          pauseDuration={1800}
-          showCursor
-          textColors={["#ffffff", "#38bdf8", "#f472b6"]}
-          cursorBlinkDuration={0.5}
-        />
+      {/* Centered content */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4 text-center pointer-events-auto gap-10">
+        <div className="max-w-[95vw] px-2 overflow-hidden">
+          <TextType
+            text={[
+              "Welcome to my portfolio.",
+              "I'm Atharva.",
+              "ML Engineer | Backend | Fintech",
+            ]}
+            className="font-bold whitespace-nowrap text-[clamp(1.5rem,5vw,4rem)]"
+            typingSpeed={60}
+            deletingSpeed={40}
+            pauseDuration={1800}
+            showCursor
+            textColors={["#ffffff", "#38bdf8", "#f472b6"]}
+            cursorBlinkDuration={0.5}
+          />
+        </div>
+
         <ShinyText
-          text="Building intelligent backends & machine learning projects that solve real problems."
-          className="text-xl md:text-3xl"
-        />
+  text="Crafting smart backends and ML solutions that solve real-world problems."
+  className="
+    text-lg sm:text-xl md:text-3xl
+    max-w-sm sm:max-w-md md:max-w-none   /* Allow full width at md+ */
+    mx-auto
+    text-center
+  "
+/>
+
+
+
+
       </div>
     </div>
   );
