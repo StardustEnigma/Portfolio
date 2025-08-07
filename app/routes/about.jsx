@@ -47,59 +47,64 @@ export default function About() {
           />
 
           <main className="z-10 flex flex-col items-center text-center w-full max-w-3xl">
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold flex flex-wrap justify-center gap-2 mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-              <SplitText
-                text="Hi, I’m"
-                className="text-white drop-shadow"
-                delay={100}
-                duration={0.6}
-                ease="power3.out"
-                splitType="chars"
-                from={{ opacity: 0, y: 40 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-                rootMargin="-100px"
-              />
-              <span>
-                <SplitText
-                  text="Atharva Mandle"
-                  className="text-[#38bdf8] drop-shadow-glow"
-                  delay={700}
-                  duration={0.6}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 40 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-100px"
-                />
-              </span>
-            </h1>
-            <p className="text-base sm:text-lg md:text-xl text-cyan-200/90 italic max-w-xs sm:max-w-xl mb-7 font-light">
-              Machine Learning ⚡ Fintech Backend Systems
-            </p>
-            <div className="w-full bg-white/10 rounded-2xl p-7 sm:p-10 md:p-12 backdrop-blur-lg shadow-xl mb-8 border border-white/10 hover:shadow-cyan-500/20 transition duration-300">
-              <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed hover:text-white cursor-default">
-                As a{" "}
-                <span className="text-[#ffffff] font-semibold">Computer Science</span>{" "}
-                student, my strongest interests are in{" "}
-                <span className="text-[#38bdf8] font-semibold">machine learning</span> and the{" "}
-                <span className="text-[#f472b6] font-semibold">fintech</span> space. I'm building my expertise to solve financial and tech challenges using{" "}
-                <span className="text-[#38bdf8] font-semibold">intelligent models</span> and{" "}
-                <span className="text-[#f472b6] font-semibold">data-driven solutions</span>. Alongside this, I focus on{" "}
-                <span className="text-[#38bdf8] font-semibold">backend development</span>,{" "}
-                <span className="text-[#ffffff] font-semibold">scalable architectures</span>, and{" "}
-                <span className="text-[#f472b6] font-semibold">reliable system design</span>.
-              </p>
-            </div>
+  <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-white">
+    <SplitText
+      text="Hi, I’m"
+      className="text-white drop-shadow"
+      delay={100}
+      duration={0.6}
+      ease="power3.out"
+      splitType="chars"
+      from={{ opacity: 0, y: 40 }}
+      to={{ opacity: 1, y: 0 }}
+      threshold={0.1}
+      rootMargin="-100px"
+    />
+    <span>
+      <SplitText
+        text=" Atharva Mandle"
+        className="text-cyan-400 drop-shadow"
+        delay={700}
+        duration={0.6}
+        ease="power3.out"
+        splitType="chars"
+        from={{ opacity: 0, y: 40 }}
+        to={{ opacity: 1, y: 0 }}
+        threshold={0.1}
+        rootMargin="-100px"
+      />
+    </span>
+  </h1>
 
-            <button
-              onClick={scrollToSkills}
-              className="px-7 py-2 rounded-full bg-cyan-500 text-[#12023a] font-semibold text-base shadow-md hover:scale-105 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition-all"
-            >
-              View My Skills ↓
-            </button>
-          </main>
+  <p className="text-base sm:text-lg md:text-xl text-cyan-200 italic max-w-xs sm:max-w-xl mb-7 font-light">
+    Machine Learning ⚡ Fintech Backend Systems
+  </p>
+
+  <div className="w-full bg-white/10 rounded-2xl p-7 sm:p-10 md:p-12 backdrop-blur-lg shadow-xl mb-8 border border-white/10 hover:shadow-cyan-500/20 transition duration-300">
+    <p className="text-base sm:text-lg md:text-xl text-gray-200 leading-relaxed hover:text-white cursor-default">
+      As a{" "}
+      <span className="font-semibold text-white">Computer Science</span> student,
+      my strongest interests are in{" "}
+      <span className="font-semibold text-cyan-400">machine learning</span> and the{" "}
+      <span className="font-semibold text-cyan-300">fintech</span> space. I'm building
+      my expertise to solve challenges using{" "}
+      <span className="font-semibold text-cyan-400">intelligent models</span> and{" "}
+      <span className="font-semibold text-cyan-300">data-driven solutions</span>. I also
+      focus on{" "}
+      <span className="font-semibold text-cyan-400">backend development</span>,{" "}
+      <span className="font-semibold text-white">scalable architectures</span>, and{" "}
+      <span className="font-semibold text-cyan-300">system design</span>.
+    </p>
+  </div>
+
+  <button
+    onClick={scrollToSkills}
+    className="px-7 py-2 rounded-full bg-cyan-500 text-[#12023a] font-semibold text-base shadow-md hover:scale-105 focus:outline-none focus:ring-2 focus:ring-cyan-300 transition-all"
+  >
+    View My Skills ↓
+  </button>
+</main>
+
         </section>
 
         {/* Page 2 */}
