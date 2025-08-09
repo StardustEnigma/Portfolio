@@ -58,6 +58,7 @@ export default function Contact() {
   }, []);
 
   return (
+    
     <div className="relative w-full min-h-screen bg-gradient-to-br from-[#0e0220] via-[#14062e] to-[#1a0940] text-white overflow-x-hidden">
       <Navbar />
 
@@ -82,7 +83,7 @@ export default function Contact() {
           <p className="mb-10 text-cyan-200 font-light text-base sm:text-lg text-center max-w-md">
             Let’s connect on your favorite platform or reach out directly!
           </p>
-
+        
           {/* Contact Links Grid */}
           <div className="z-10 w-full max-w-lg grid grid-cols-2 sm:grid-cols-3 gap-5 mb-10">
             <a href="https://github.com/AtharvaMandle" target="_blank" rel="noopener noreferrer"
@@ -124,6 +125,7 @@ export default function Contact() {
             <a href="https://atharvamandle.me" target="_blank" rel="noopener noreferrer"
               className="group bg-white/10 rounded-2xl px-4 py-8 flex flex-col items-center hover:scale-105 transition shadow-lg hover:shadow-cyan-200/40 backdrop-blur-lg border border-white/20"
             >
+              
               <svg width={36} height={36} viewBox="0 0 24 24" fill="none"
                 className="mb-2 text-cyan-300 group-hover:text-white transition"
               >
@@ -159,7 +161,7 @@ export default function Contact() {
               e.preventDefault();
               const formData = new FormData(e.target);
               try {
-                const response = await fetch("https://formspree.io/f/xgvzpklp", {
+                const response = await fetch(import.meta.env.VITE_FORMSPREE_ENDPOINT, {
                   method: "POST",
                   headers: { Accept: "application/json" },
                   body: formData,
@@ -176,6 +178,7 @@ export default function Contact() {
             }}
             className="w-full max-w-xl bg-white/10 p-8 sm:p-10 rounded-2xl shadow-2xl border border-white/20 backdrop-blur-lg flex flex-col gap-5"
           >
+            
             <div className="flex flex-col sm:flex-row gap-4">
               <input type="text" name="name" placeholder="Your name" required
                 className="flex-1 px-4 py-3 rounded-lg bg-white/20 border-0 focus:ring-2 focus:ring-cyan-400 text-white placeholder-gray-300 outline-none"

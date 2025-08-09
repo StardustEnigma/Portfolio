@@ -55,7 +55,7 @@ export default function Navbar() {
             select-none
           "
         >
-          ATHARVA.DEV
+          ATHARVA
         </motion.a>
 
         {/* Links: hidden on mobile, flex on md+ */}

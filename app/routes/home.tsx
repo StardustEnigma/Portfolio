@@ -23,7 +23,7 @@ export default function Home() {
             text={[
               "Welcome to my portfolio.",
               "I'm Atharva.",
-              "ML & Backend | Fintech",
+              "ML & Backend | Fintech.",
             ]}
             className="font-bold whitespace-nowrap text-[clamp(1.5rem,5vw,4rem)]"
             typingSpeed={60}
