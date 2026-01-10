@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+
+body {
+    font-family: "JetBrains Mono", monospace;
+    background: radial-gradient(
+            circle at top,
+            rgba(255,255,255,0.04),
+            transparent 60%
+    ),
+    #1e1f22;
+    color: #d4d4d4;
+}
