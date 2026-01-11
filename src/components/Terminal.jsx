@@ -194,7 +194,7 @@ export default function Terminal({ setInfo, onShowInfoMobile }) {
 /* ---------------- COMMAND LOGIC ---------------- */
 
 function getOutput(cmd) {
-    switch (cmd) {
+    switch (cmd.toLowerCase()) {
         case "about":
             return {
                 terminal: [
@@ -419,54 +419,143 @@ function getOutput(cmd) {
                     ),
                 },
             };
-
         case "projects":
             return {
                 terminal: [
                     "NeoWallet – Digital Wallet System",
-                    "E-Commerce Microservices Backend",
-                    "Authentication & Authorization API",
-                    "Real-time Chat Backend",
+                    "E-Commerce Enterprise Backend",
+                    "Challenge App",
                 ].map((p) => ({
                     text: `▸ ${p}`,
                     class: "text-[#ce9178] ml-4",
                 })),
                 info: {
                     title: "Projects",
-                    content:
-                        "Designed and developed backend systems including a digital wallet, microservices-based e-commerce platform, secure authentication APIs, and real-time services.",
+                    content: <ProjectsInfo />,
                 },
             };
+
 
         case "contact":
             return {
                 terminal: [
                     {
-                        text: "LinkedIn  → https://www.linkedin.com/in/atharva-mandle-5214312aa/",
-                        class: "text-[#9da0a6] underline underline-offset-2",
+                        text: "linkedin   : atharva-mandle",
+                        class: "text-[#4fc1ff] ml-4",
                     },
                     {
-                        text: "GitHub    → https://github.com/atharvamandle",
-                        class: "text-[#9da0a6] underline underline-offset-2",
+                        text: "github     : StardustEnigma",
+                        class: "text-[#6aab73] ml-4",
                     },
                     {
-                        text: "Email     → mailto:atharva.mandle@rbunagpur.in",
-                        class: "text-[#9da0a6] underline underline-offset-2",
+                        text: "email      : atharvamandle19@gmail.com",
+                        class: "text-[#c586c0] ml-4",
+                    },
+                    {
+                        text: "",
+                        class: "",
+                    },
+                    {
+                        text: "hint → open contact details in info panel",
+                        class: "text-[#7a7e85] italic ml-4",
                     },
                 ],
+
                 info: {
                     title: "Contact",
-                    content:
-                        "You can reach out to Atharva Mandle through the following channels:\n\n" +
-                        "• LinkedIn – For professional networking, internships, and opportunities.\n" +
-                        "• GitHub – To explore backend, Spring Boot, and system design projects.\n" +
-                        "• Email – For direct and formal communication.\n\n" +
-                        "Best way to connect: LinkedIn.",
+                    content: (
+                        <div className="space-y-5 text-sm leading-relaxed">
+
+                            {/* Intro */}
+                            <p>
+                                You can connect with{" "}
+                                <span className="text-[#d7ba7d] font-medium">
+                            Atharva Mandle
+                        </span>{" "}
+                                through the following professional channels.
+                            </p>
+
+                            <div className="border-t border-[#303030]" />
+
+                            {/* LinkedIn */}
+                            <div className="space-y-1">
+                                <p className="text-[#4fc1ff] font-medium">
+                                    ▸ LinkedIn
+                                </p>
+                                <p className="text-[#9da0a6] ml-4">
+                                    Best platform for{" "}
+                                    <span className="text-[#6aab73]">
+                                professional networking
+                            </span>, internships, and backend opportunities.
+                                </p>
+                                <p className="ml-4">
+                                    <a
+                                        href="https://www.linkedin.com/in/atharva-mandle-5214312aa/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="text-[#4fc1ff] underline underline-offset-2 hover:text-[#9cdcfe]"
+                                    >
+                                        linkedin.com/in/atharva-mandle
+                                    </a>
+                                </p>
+                            </div>
+
+                            {/* GitHub */}
+                            <div className="space-y-1">
+                                <p className="text-[#6aab73] font-medium">
+                                    ▸ GitHub
+                                </p>
+                                <p className="text-[#9da0a6] ml-4">
+                                    Explore{" "}
+                                    <span className="text-[#c586c0]">
+                                backend projects
+                            </span>, Spring Boot systems, and code quality.
+                                </p>
+                                <p className="ml-4">
+                                    <a
+                                        href="https://github.com/StardustEnigma"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="text-[#6aab73] underline underline-offset-2 hover:text-[#9cdcfe]"
+                                    >
+                                        github.com/StardustEnigma
+                                    </a>
+                                </p>
+                            </div>
+
+                            {/* Email */}
+                            <div className="space-y-1">
+                                <p className="text-[#c586c0] font-medium">
+                                    ▸ Email
+                                </p>
+                                <p className="text-[#9da0a6] ml-4">
+                                    For{" "}
+                                    <span className="text-[#ffd866]">
+                                direct and formal communication
+                            </span>{" "}
+                                    related to internships or collaborations.
+                                </p>
+                                <p className="ml-4">
+                                    <a
+                                        href="mailto:atharvamandle19@gmail.com"
+                                        className="text-[#c586c0] underline underline-offset-2 hover:text-[#9cdcfe]"
+                                    >
+                                        atharvamandle19@gmail.com
+                                    </a>
+                                </p>
+                            </div>
+
+                            {/* Footer */}
+                            <p className="text-[#7a7e85] italic">
+                                Preferred contact method: LinkedIn.
+                            </p>
+
+                        </div>
+                    ),
                 },
             };
 
-
-        case "help":
+        case "help" || "HELP":
             return {
                 terminal: [
                     {
@@ -497,6 +586,15 @@ function getOutput(cmd) {
                     },
 
                     {
+                        text: "contact",
+                        class: "text-[#6aab73] font-medium",
+                    },
+                    {
+                        text: "  → how to reach me",
+                        class: "text-[#9da0a6]",
+                    },
+
+                    {
                         text: "help",
                         class: "text-[#6aab73] font-medium",
                     },
@@ -505,8 +603,68 @@ function getOutput(cmd) {
                         class: "text-[#9da0a6]",
                     },
                 ],
-            };
+                info: {
+                    title: "Help",
+                    content: (
+                        <div className="space-y-5 text-sm leading-relaxed">
 
+                            {/* Intro */}
+                            <p>
+                                This terminal provides quick access to{" "}
+                                <span className="text-[#d7ba7d] font-medium">
+                            portfolio sections
+                        </span>{" "}
+                                using simple commands, similar to a developer CLI.
+                            </p>
+
+                            <div className="border-t border-[#303030]" />
+
+                            {/* Commands */}
+                            <div className="space-y-1">
+                                <p className="text-[#ffd866] font-medium">▸ Available Commands</p>
+
+                                <p className="text-[#9da0a6] ml-4">
+                                    <span className="text-[#6aab73]">about</span>{" "}
+                                    — personal background and current focus
+                                </p>
+
+                                <p className="text-[#9da0a6] ml-4">
+                                    <span className="text-[#6aab73]">skills</span>{" "}
+                                    — technical stack and core competencies
+                                </p>
+
+                                <p className="text-[#9da0a6] ml-4">
+                                    <span className="text-[#6aab73]">projects</span>{" "}
+                                    — flagship backend projects and system design work
+                                </p>
+
+                                <p className="text-[#9da0a6] ml-4">
+                                    <span className="text-[#6aab73]">contact</span>{" "}
+                                    — professional contact information
+                                </p>
+                            </div>
+
+                            <div className="border-t border-[#303030]" />
+
+                            {/* Usage */}
+                            <div className="space-y-1">
+                                <p className="text-[#c586c0] font-medium">▸ Usage</p>
+                                <p className="text-[#9da0a6] ml-4">
+                                    Type a command and press{" "}
+                                    <span className="text-[#4fc1ff]">Enter</span>, or click a command
+                                    pill to navigate quickly.
+                                </p>
+                            </div>
+
+                            {/* Footer */}
+                            <p className="text-[#7a7e85] italic">
+                                Designed to mimic a lightweight developer terminal for fast navigation.
+                            </p>
+
+                        </div>
+                    ),
+                },
+            };
 
         default:
             return {
@@ -518,4 +676,220 @@ function getOutput(cmd) {
                 ],
             };
     }
+}function ProjectsInfo() {
+    const [active, setActive] = useState("wallet");
+
+    return (
+        <div className="space-y-5 text-sm leading-relaxed">
+
+            {/* Buttons */}
+            <div className="flex gap-2">
+                <button
+                    onClick={() => setActive("wallet")}
+                    className={`px-3 py-1 text-xs rounded border
+                        ${active === "wallet"
+                        ? "border-[#4fc1ff] text-[#4fc1ff] bg-[#1f2937]"
+                        : "border-[#303030] text-[#9da0a6] hover:text-[#d4d4d4]"
+                    }`}
+                >
+                    NeoWallet
+                </button>
+
+                <button
+                    onClick={() => setActive("ecommerce")}
+                    className={`px-3 py-1 text-xs rounded border
+                        ${active === "ecommerce"
+                        ? "border-[#6aab73] text-[#6aab73] bg-[#1f2937]"
+                        : "border-[#303030] text-[#9da0a6] hover:text-[#d4d4d4]"
+                    }`}
+                >
+                    E-Commerce
+                </button>
+            </div>
+
+            <div className="border-t border-[#303030]" />
+
+            {/* CONTENT */}
+            {active === "wallet" && (
+                <div className="space-y-5 text-sm leading-relaxed">
+
+                    <p>
+                        <a
+                            href="https://github.com/your-username/neowallet"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[#4fc1ff] font-medium underline underline-offset-2 hover:text-[#9cdcfe]"
+                        >
+                            NeoWallet
+                        </a>{" "}
+                        is a{" "}
+                        <span className="text-[#c586c0]">production-grade fintech backend</span>{" "}
+                        system focused on{" "}
+                        <span className="text-[#d7ba7d]">secure wallet operations</span>, user
+                        balances, and transaction consistency.
+                    </p>
+
+                    <div className="border-t border-[#303030]" />
+
+                    <div className="space-y-1">
+                        <p className="text-[#ffd866] font-medium">▸ Architecture</p>
+                        <p className="text-[#9da0a6] ml-4">
+                            Built using{" "}
+                            <span className="text-[#4fc1ff]">Spring Boot</span> with a clean
+                            layered architecture separating controllers, services, and data
+                            access layers.
+                        </p>
+                    </div>
+
+                    <div className="space-y-1">
+                        <p className="text-[#c586c0] font-medium">▸ Security</p>
+                        <p className="text-[#9da0a6] ml-4">
+                            <span className="text-[#ce9178]">JWT-based authentication</span>{" "}
+                            combined with{" "}
+                            <span className="text-[#6aab73]">role-based authorization</span>{" "}
+                            for secure access control.
+                        </p>
+                    </div>
+
+                    <div className="space-y-1">
+                        <p className="text-[#6aab73] font-medium">▸ Domain Design</p>
+                        <p className="text-[#9da0a6] ml-4">
+                            Designed with{" "}
+                            <span className="text-[#ffd866]">6+ core entities</span> including
+                            User, Wallet, Transaction, Role, Ledger, and Audit for real-world
+                            financial modeling.
+                        </p>
+                    </div>
+
+                    <div className="space-y-1">
+                        <p className="text-[#9cdcfe] font-medium">▸ Data Integrity</p>
+                        <p className="text-[#9da0a6] ml-4">
+                            Uses{" "}
+                            <span className="text-[#4fc1ff]">PostgreSQL</span> with{" "}
+                            <span className="text-[#ffd866]">ACID-compliant transactions</span>{" "}
+                            to ensure balance correctness and consistency.
+                        </p>
+                    </div>
+
+                    <div className="space-y-1">
+                        <p className="text-[#f44747] font-medium">▸ Scalability</p>
+                        <p className="text-[#9da0a6] ml-4">
+                            Stateless backend design suitable for{" "}
+                            <span className="text-[#6aab73]">cloud-based deployment</span> and
+                            horizontal scaling.
+                        </p>
+                    </div>
+                    <p className="text-[#7a7e85] text-xs">
+                        Source code available on{" "}
+                        <a
+                            href="https://github.com/your-username/neowallet"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[#4fc1ff] underline underline-offset-2 hover:text-[#9cdcfe]"
+                        >
+                            GitHub
+                        </a>.
+                    </p>
+
+                    <p className="text-[#7a7e85] italic">
+                        Designed as a flagship fintech project with a strong emphasis on
+                        security, correctness, and real-world transaction flows.
+                    </p>
+
+                </div>
+
+            )}
+
+
+            {active === "ecommerce" && (
+                <div className="space-y-5 text-sm leading-relaxed">
+
+                    <p>
+                        The{" "}
+                        <a
+                            href="https://github.com/your-username/ecommerce-backend"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[#6aab73] font-medium underline underline-offset-2 hover:text-[#9cdcfe]"
+                        >
+                            E-Commerce Backend
+                        </a>{" "}
+                        is an{" "}
+                        <span className="text-[#c586c0]">enterprise-scale system</span>{" "}
+                        designed to support complex product, order, and user workflows with
+                        high scalability.
+                    </p>
+
+
+                    <div className="border-t border-[#303030]" />
+
+                    <div className="space-y-1">
+                        <p className="text-[#ffd866] font-medium">▸ Core Modules</p>
+                        <p className="text-[#9da0a6] ml-4">
+                            Modular design covering{" "}
+                            <span className="text-[#4fc1ff]">products</span>,{" "}
+                            <span className="text-[#4fc1ff]">orders</span>,{" "}
+                            <span className="text-[#4fc1ff]">users</span>, and inventory
+                            management.
+                        </p>
+                    </div>
+
+                    <div className="space-y-1">
+                        <p className="text-[#c586c0] font-medium">▸ Authorization</p>
+                        <p className="text-[#9da0a6] ml-4">
+                            <span className="text-[#ce9178]">Role-based access control</span>{" "}
+                            implemented using Spring Security for admins, sellers, and
+                            customers.
+                        </p>
+                    </div>
+
+                    <div className="space-y-1">
+                        <p className="text-[#6aab73] font-medium">▸ API Design</p>
+                        <p className="text-[#9da0a6] ml-4">
+                            RESTful APIs built with clear DTO contracts, validation layers, and
+                            standardized error handling.
+                        </p>
+                    </div>
+
+                    <div className="space-y-1">
+                        <p className="text-[#9cdcfe] font-medium">▸ Persistence</p>
+                        <p className="text-[#9da0a6] ml-4">
+                            Uses{" "}
+                            <span className="text-[#4fc1ff]">PostgreSQL</span> for relational
+                            data modeling and transactional consistency.
+                        </p>
+                    </div>
+
+                    <div className="space-y-1">
+                        <p className="text-[#f44747] font-medium">▸ Scalability</p>
+                        <p className="text-[#9da0a6] ml-4">
+                            Designed for{" "}
+                            <span className="text-[#6aab73]">high concurrency</span> and future
+                            microservice decomposition.
+                        </p>
+                    </div>
+                    <p className="text-[#7a7e85] text-xs">
+                        Source code available on{" "}
+                        <a
+                            href="https://github.com/your-username/ecommerce-backend"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[#6aab73] underline underline-offset-2 hover:text-[#9cdcfe]"
+                        >
+                            GitHub
+                        </a>.
+                    </p>
+
+                    <p className="text-[#7a7e85] italic">
+                        Focused on enterprise design patterns, clean architecture, and
+                        long-term maintainability.
+                    </p>
+
+                </div>
+
+            )}
+
+        </div>
+    );
 }
+
