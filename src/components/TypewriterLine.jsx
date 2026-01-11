@@ -1,24 +1,50 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
-export default function TypewriterLine({ text, className, speed = 14 }) {
-    const [displayed, setDisplayed] = useState("");
+export default function TypewriterLine({
+                                           text,
+                                           className,
+                                           speed = 0.035,
+                                           delay = 0,
+                                           onType,
+                                       }) {
+    const elRef = useRef(null);
+    const completedRef = useRef(false); // 🔒 PERMANENT LOCK
 
     useEffect(() => {
-        let i = 0;
-        setDisplayed("");
+        const el = elRef.current;
+        if (!el) return;
 
-        const interval = setInterval(() => {
-            if (i >= text.length) {
-                clearInterval(interval);
-                return;
-            }
+        // 🔒 If already completed, just render text and exit
+        if (completedRef.current) {
+            el.textContent = text;
+            return;
+        }
 
-            setDisplayed((prev) => prev + text.charAt(i));
-            i++;
-        }, speed);
+        el.textContent = "";
 
-        return () => clearInterval(interval);
-    }, [text, speed]);
+        const chars = text.split("");
+        const obj = { i: 0 };
 
-    return <div className={className}>{displayed}</div>;
+        const tween = gsap.to(obj, {
+            i: chars.length,
+            duration: chars.length * speed,
+            delay,
+            ease: "none",
+            onUpdate: () => {
+                el.textContent = chars
+                    .slice(0, Math.floor(obj.i))
+                    .join("");
+                onType?.();
+            },
+            onComplete: () => {
+                el.textContent = text;
+                completedRef.current = true; // 🔥 LOCK FOREVER
+            },
+        });
+
+        return () => tween.kill();
+    }, [text, speed, delay, onType]);
+
+    return <div ref={elRef} className={className} />;
 }
