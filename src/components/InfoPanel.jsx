@@ -2,19 +2,19 @@ export default function InfoPanel({ info, mobile = false, onClose }) {
     if (!info) return null;
 
     return (
-        <div className="h-full bg-[#181818] border border-[#303030] rounded-lg flex flex-col">
+        <div className="h-full bg-[#111113]/50 border border-[#27272a]/40 rounded-lg flex flex-col">
 
             {/* Header */}
-            <div className="h-10 sm:h-11 px-3 sm:px-4 flex items-center justify-between border-b border-[#303030] shrink-0">
-                <span className="text-[#d4d4d4] text-sm">
+            <div className="h-10 sm:h-11 px-3 sm:px-4 flex items-center justify-between border-b border-[#27272a]/40 shrink-0">
+                <span className="text-[#e4e4e7] text-sm">
                     {info.title}
                 </span>
 
                 {mobile && (
                     <button
                         onClick={onClose}
-                        className="text-xs px-3 py-1.5 border border-[#303030] rounded-md
-                            text-[#d4d4d4] bg-[#252526] active:bg-[#303030] transition-colors"
+                        className="text-xs px-3 py-1.5 border border-[#27272a] rounded-md
+                            text-[#e4e4e7] bg-[#18181b]/60 active:bg-[#27272a]/60 transition-colors"
                     >
                         ✕ Close
                     </button>
@@ -29,7 +29,7 @@ export default function InfoPanel({ info, mobile = false, onClose }) {
                     overflow-y-auto
                     p-3 sm:p-5
                     text-xs sm:text-sm
-                    text-[#d4d4d4]
+                    text-[#e4e4e7]
                     leading-relaxed
                     animate-info-fade
                 "

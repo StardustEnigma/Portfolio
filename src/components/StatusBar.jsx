@@ -17,7 +17,7 @@ export default function StatusBar({ activeCommand }) {
     return (
         <div
             className="h-6 px-3 flex items-center justify-between shrink-0
-                border-t border-[#303030] bg-[#1e1f22] text-[10px] sm:text-[11px] text-[#7a7e85]
+                border-t border-[#27272a]/50 bg-[#0e0e11]/70 backdrop-blur-xl text-[10px] sm:text-[11px] text-[#71717a]
                 select-none"
         >
             {/* Left side */}
@@ -32,11 +32,11 @@ export default function StatusBar({ activeCommand }) {
 
                 {/* Errors/warnings — always clean ;) */}
                 <span className="hidden sm:flex items-center gap-1">
-                    <span className="text-[#6aab73]">✓</span> 0 errors
+                    <span className="text-[#34d399]">✓</span> 0 errors
                 </span>
 
                 {activeCommand && (
-                    <span className="text-[#9cdcfe]">
+                    <span className="text-[#f59e0b]">
                         cmd: {activeCommand}
                     </span>
                 )}

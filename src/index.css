@@ -3,15 +3,35 @@
 
 body {
     font-family: "JetBrains Mono", monospace;
-    background: radial-gradient(
-            circle at top,
-            rgba(255,255,255,0.04),
-            transparent 60%
-    ),
-    #1e1f22;
-    color: #d4d4d4;
+    background: #09090b;
+    color: #e2e8f0;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+}
+
+/* Animated aurora gradient mesh Ã¢'‚¬'€ drifting color orbs */
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(circle 800px at 30% 20%, rgba(245, 158, 11, 0.05), transparent 70%),
+        radial-gradient(circle 600px at 75% 75%, rgba(244, 63, 94, 0.04), transparent 70%),
+        radial-gradient(circle 500px at 50% 50%, rgba(167, 139, 250, 0.03), transparent 60%);
+    animation: aurora-drift 25s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+}
+
+@keyframes aurora-drift {
+    0%   { transform: translate(0, 0) rotate(0deg); }
+    33%  { transform: translate(-3%, 2%) rotate(0.5deg); }
+    66%  { transform: translate(2%, -2%) rotate(-0.5deg); }
+    100% { transform: translate(-1%, 1%) rotate(0.3deg); }
 }
 
 /* Info panel fade-in animation */
@@ -30,24 +50,28 @@ body {
     animation: info-fade 0.3s ease-out;
 }
 
-/* Custom scrollbar for dark theme */
+/* Custom scrollbar — thin, auto-fading */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
 }
 ::-webkit-scrollbar-track {
     background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-    background: #3c3c3c;
-    border-radius: 3px;
+    background: rgba(161, 161, 170, 0.10);
+    border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #505050;
+    background: rgba(161, 161, 170, 0.22);
+}
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(161, 161, 170, 0.10) transparent;
 }
 
-/* Selection colours matching IDE */
+/* Selection colours matching theme */
 ::selection {
-    background: rgba(51, 153, 255, 0.25);
+    background: rgba(245, 158, 11, 0.20);
 }
 
 /* Blinking cursor for terminal input */
@@ -81,6 +105,20 @@ body {
 
 .animate-slide-in {
     animation: slide-in-right 0.25s ease-out;
+}
+
+/* Dropdown fade-in (easter eggs menu) */
+@keyframes dropdown-in {
+    from { opacity: 0; transform: translateY(-4px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-dropdown-in {
+    animation: dropdown-in 0.15s ease-out;
+}
+
+/* Subtle glow utility for accent elements */
+\.glow-accent {
+    box-shadow: 0 0 30px rgba(245, 158, 11, 0.06), 0 0 60px rgba(244, 63, 94, 0.03);
 }
 
 /* Allow horizontal scroll on long lines (ASCII art) on mobile */

@@ -44,34 +44,34 @@ export default function BootSplash({ onDone }) {
 
     return (
         <div
-            className={`fixed inset-0 z-9999 bg-[#1e1f22] flex flex-col items-center justify-center
+            className={`fixed inset-0 z-9999 bg-[#09090b] flex flex-col items-center justify-center
                 transition-opacity duration-400 ${fading ? "opacity-0" : "opacity-100"}`}
         >
             {/* Logo / Brand */}
             <div className="mb-8 text-center">
-                <div className="text-4xl sm:text-5xl font-semibold text-[#d4d4d4] mb-2 tracking-tight">
-                    <span className="text-[#4b9cff]">{"{ "}</span>
+                <div className="text-4xl sm:text-5xl font-semibold text-[#e4e4e7] mb-2 tracking-tight">
+                    <span className="text-[#f59e0b]">{"{ "}</span>
                     AM
-                    <span className="text-[#4b9cff]">{" }"}</span>
+                    <span className="text-[#c084fc]">{" }"}</span>
                 </div>
-                <p className="text-[#7a7e85] text-sm">Atharva Mandle — Portfolio IDE</p>
+                <p className="text-[#71717a] text-sm">Atharva Mandle — Portfolio IDE</p>
             </div>
 
             {/* Progress bar */}
             <div className="w-64 sm:w-80">
-                <div className="h-0.75 bg-[#303030] rounded-full overflow-hidden">
+                <div className="h-1 bg-[#27272a] rounded-full overflow-hidden">
                     <div
-                        className="h-full bg-[#4b9cff] transition-all duration-100 ease-linear rounded-full"
+                        className="h-full bg-gradient-to-r from-[#f59e0b] to-[#c084fc] transition-all duration-100 ease-linear rounded-full"
                         style={{ width: `${progress}%` }}
                     />
                 </div>
-                <p className="text-[#7a7e85] text-xs mt-3 text-center h-4">
+                <p className="text-[#71717a] text-xs mt-3 text-center h-4">
                     {stage < STAGES.length ? STAGES[stage].text : "Ready"}
                 </p>
             </div>
 
             {/* Version info */}
-            <p className="absolute bottom-6 text-[10px] text-[#505050]">
+            <p className="absolute bottom-6 text-[10px] text-[#52525b]">
                 Portfolio IDE v2.0 — Built with React + Vite
             </p>
         </div>

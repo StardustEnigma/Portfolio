@@ -18,7 +18,7 @@ export default function TabBar({ tabs, activeTab, onSelect, onClose, onCloseAll 
     if (tabs.length === 0) return null;
 
     return (
-        <div className="flex items-center h-9 border-b border-[#303030] bg-[#1e1f22]">
+        <div className="flex items-center h-9 border-b border-[#27272a]/40 bg-[#18181b]/40">
             {/* Scrollable tabs */}
             <div className="flex-1 flex items-center h-full overflow-x-auto no-scrollbar">
                 {tabs.map((tab) => {
@@ -28,21 +28,21 @@ export default function TabBar({ tabs, activeTab, onSelect, onClose, onCloseAll 
                     return (
                         <div
                             key={tab}
-                            className={`group flex items-center gap-1.5 px-3 h-full text-xs border-r border-[#303030] cursor-pointer
+                            className={`group flex items-center gap-1.5 px-3 h-full text-xs border-r border-[#27272a] cursor-pointer
                                 shrink-0 transition-colors duration-100
                                 ${isActive
-                                    ? "bg-[#181818] text-[#d4d4d4] border-t-2 border-t-[#4b9cff]"
-                                    : "bg-[#1e1f22] text-[#7a7e85] hover:bg-[#252526] border-t-2 border-t-transparent"
+                                    ? "bg-[#111113]/50 text-[#e4e4e7] border-t-2 border-t-[#f59e0b]"
+                                    : "bg-[#18181b]/40 text-[#71717a] hover:bg-[#1f1f23]/50 border-t-2 border-t-transparent"
                                 }`}
                             onClick={() => onSelect(tab)}
                         >
                             {/* File icon dot */}
-                            <span className={`w-2 h-2 rounded-full shrink-0 ${isActive ? "bg-[#4b9cff]" : "bg-[#505050]"}`}/>
+                            <span className={`w-2 h-2 rounded-full shrink-0 ${isActive ? "bg-[#f59e0b]" : "bg-[#52525b]"}`}/>
                             <span>{label}</span>
                             {/* Close button */}
                             <button
                                 onClick={(e) => { e.stopPropagation(); onClose(tab); }}
-                                className="ml-1 opacity-0 group-hover:opacity-100 hover:text-[#f44747] transition-opacity text-[10px]"
+                                className="ml-1 opacity-0 group-hover:opacity-100 hover:text-[#fb7185] transition-opacity text-[10px]"
                                 aria-label={`Close ${label}`}
                             >
                                 ✕
@@ -56,8 +56,8 @@ export default function TabBar({ tabs, activeTab, onSelect, onClose, onCloseAll 
             {tabs.length > 1 && (
                 <button
                     onClick={onCloseAll}
-                    className="shrink-0 px-2.5 h-full text-[10px] text-[#7a7e85] hover:text-[#f44747]
-                        border-l border-[#303030] transition-colors"
+                    className="shrink-0 px-2.5 h-full text-[10px] text-[#71717a] hover:text-[#fb7185]
+                        border-l border-[#27272a] transition-colors"
                     title="Close all tabs"
                     aria-label="Close all tabs"
                 >

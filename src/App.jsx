@@ -7,6 +7,7 @@ import ActivityBar from "./components/ActivityBar";
 import TabBar, { useTabs } from "./components/TabBar";
 import BootSplash from "./components/BootSplash";
 import { getOutput } from "./data/commands";
+import CommandPills from "./components/CommandPills";
 
 export default function App() {
     const [booted, setBooted] = useState(false);
@@ -77,23 +78,32 @@ export default function App() {
     }
 
     return (
-        <div className="h-screen bg-[#1e1e1e] flex flex-col">
+        <div className="h-screen flex flex-col relative z-10">
 
             {/* ===== TOP IDE HEADER ===== */}
-            <div className="h-10 sm:h-11 px-3 sm:px-4 flex items-center
-                    border-b border-[#303030]
-                    bg-[#252526] text-xs sm:text-sm shrink-0">
+            <div className="h-12 sm:h-12 px-3 sm:px-4 flex items-center justify-between
+                    border-b border-[#27272a]/50
+                    bg-[#0e0e11]/70 backdrop-blur-xl text-xs sm:text-sm shrink-0
+                    relative z-50 overflow-visible">
 
-                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0 shrink-0">
                     {/* Window dots */}
                     <div className="hidden sm:flex items-center gap-1.5 mr-2 shrink-0">
-                        <span className="w-3 h-3 rounded-full bg-[#f44747]/80" />
-                        <span className="w-3 h-3 rounded-full bg-[#d7ba7d]/80" />
-                        <span className="w-3 h-3 rounded-full bg-[#6aab73]/80" />
+                        <span className="w-3 h-3 rounded-full bg-[#fb7185]/80" />
+                        <span className="w-3 h-3 rounded-full bg-[#fbbf24]/80" />
+                        <span className="w-3 h-3 rounded-full bg-[#34d399]/80" />
                     </div>
-                    <span className="text-[#c5c5c5] font-semibold truncate">Atharva_Mandle</span>
-                    <span className="text-[#7f848e] hidden sm:inline">—</span>
-                    <span className="text-[#7f848e] hidden sm:inline">Portfolio IDE</span>
+                    <span className="text-[#e4e4e7] font-semibold truncate hidden sm:inline">Atharva_Mandle</span>
+                </div>
+
+                {/* Command pills — centered */}
+                <div className="flex-1 flex justify-center">
+                    <CommandPills onRun={handleFileClick} />
+                </div>
+
+                {/* Right spacer for balance */}
+                <div className="hidden sm:flex items-center gap-2 shrink-0">
+                    <span className="text-[#52525b] text-[11px]">Portfolio IDE</span>
                 </div>
             </div>
 
@@ -105,8 +115,8 @@ export default function App() {
 
                 {/* Workspace area */}
                 <div className="flex-1 p-1.5 sm:p-3 md:p-4 overflow-hidden">
-                    <div className="relative h-full rounded-lg sm:rounded-xl border border-[#303030]
-                          bg-[#1e1f22]/80 backdrop-blur-md
+                    <div className="relative h-full rounded-lg sm:rounded-xl border border-[#27272a]/40
+                          bg-[#0e0e11]/40 backdrop-blur-xl
                           flex gap-2 sm:gap-4 p-1.5 sm:p-3 md:p-4 overflow-hidden">
 
                         {/* Explorer */}
@@ -118,7 +128,7 @@ export default function App() {
                         </div>
 
                         {/* Terminal */}
-                        <div className="flex-[1.4] min-w-0">
+                        <div className="flex-[1.2] min-w-0">
                             <Terminal
                                 setInfo={handleSetInfo}
                                 onShowInfoMobile={() => setShowInfoMobile(true)}
@@ -128,7 +138,7 @@ export default function App() {
                         </div>
 
                         {/* Info Panel with Tabs (Desktop) */}
-                        <div className="hidden lg:flex flex-col flex-1 min-w-0">
+                        <div className="hidden lg:flex flex-col flex-[1.3] min-w-0">
                             <TabBar
                                 tabs={tabs}
                                 activeTab={activeTab}
@@ -149,7 +159,7 @@ export default function App() {
                             >
                                 <div
                                     className="absolute right-0 top-0 h-full w-full sm:w-[85%]
-                                    bg-[#181818] border-l border-[#303030] animate-slide-in"
+                                    bg-[#111113]/90 backdrop-blur-xl border-l border-[#27272a]/50 animate-slide-in"
                                     onClick={(e) => e.stopPropagation()}
                                 >
                                     <InfoPanel
