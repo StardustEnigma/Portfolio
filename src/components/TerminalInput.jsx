@@ -83,10 +83,10 @@ export default function TerminalInput({ onCommand }) {
     );
 
     return (
-        <form onSubmit={submit} className="flex items-center gap-1 sm:gap-2 mt-2 sm:mt-3 min-w-0">
+        <form onSubmit={submit} className="flex items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3 min-w-0">
             <span className="text-[#34d399] select-none hidden sm:inline text-[15px]">atharva@portfolio</span>
-            <span className="text-[#34d399] select-none sm:hidden text-[11px]">~</span>
-            <span className="text-[#71717a] select-none text-[11px] sm:text-[15px]">$</span>
+            <span className="text-[#34d399] select-none sm:hidden text-[12px]">~</span>
+            <span className="text-[#71717a] select-none text-[12px] sm:text-[15px]">$</span>
             <input
                 ref={inputRef}
                 autoFocus
@@ -97,7 +97,7 @@ export default function TerminalInput({ onCommand }) {
                 }}
                 onKeyDown={handleKeyDown}
                 className="flex-1 min-w-0 bg-transparent outline-none text-[#34d399] caret-[#e4e4e7]
-                    text-[11px] sm:text-[15px]"
+                    text-[12px] sm:text-[15px]"
                 spellCheck={false}
                 autoComplete="off"
                 aria-label="Terminal command input"

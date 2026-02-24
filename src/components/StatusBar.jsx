@@ -16,7 +16,7 @@ export default function StatusBar({ activeCommand }) {
 
     return (
         <div
-            className="h-6 px-3 flex items-center justify-between shrink-0
+            className="h-7 sm:h-6 px-3 flex items-center justify-between shrink-0
                 border-t border-[#27272a]/50 bg-[#0e0e11]/70 backdrop-blur-xl text-[10px] sm:text-[11px] text-[#71717a]
                 select-none"
         >

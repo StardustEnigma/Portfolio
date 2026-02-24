@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect, forwardRef, useImperativeHandle } from "react";
 import TerminalInput from "./TerminalInput";
 import TypewriterLine from "./TypewriterLine";
+import CommandPills from "./CommandPills";
 import { getOutput } from "../data/commands";
 
 /* ── Welcome banner shown on first load ── */
@@ -12,7 +13,7 @@ const WELCOME_LINES = [
     { id: "w-5", type: "output", animated: false, text: "", cls: "" },
 ];
 
-const Terminal = forwardRef(function Terminal({ setInfo, onShowInfoMobile, onCommand }, ref) {
+const Terminal = forwardRef(function Terminal({ setInfo, onShowInfoMobile, onCommand, onPillRun }, ref) {
     const [history, setHistory] = useState(WELCOME_LINES);
     const terminalRef = useRef(null);
 
@@ -112,11 +113,17 @@ const Terminal = forwardRef(function Terminal({ setInfo, onShowInfoMobile, onCom
     useImperativeHandle(ref, () => runCommand, [runCommand]);
 
     return (
-        <div className="h-full bg-[#111113]/50 border border-[#27272a]/40 rounded-lg flex flex-col">
+        <div className="h-full bg-[#111113]/50 sm:border sm:border-[#27272a]/40 sm:rounded-lg flex flex-col">
 
             {/* Header */}
-            <div className="h-8 sm:h-10 px-2 sm:px-5 flex items-center border-b border-[#27272a]/40 shrink-0">
-                <span className="text-[#e4e4e7] text-[11px] sm:text-sm">Terminal</span>
+            <div className="shrink-0 border-b border-[#27272a]/40">
+                <div className="h-8 sm:h-10 px-3 sm:px-5 flex items-center">
+                    <span className="text-[#e4e4e7] text-xs sm:text-sm">Terminal</span>
+                </div>
+                {/* Command pills — mobile only, inside terminal */}
+                <div className="sm:hidden px-3 pb-2 overflow-visible">
+                    <CommandPills onRun={onPillRun} />
+                </div>
             </div>
 
             {/* Body */}
@@ -126,7 +133,7 @@ const Terminal = forwardRef(function Terminal({ setInfo, onShowInfoMobile, onCom
                 className="flex-1 overflow-y-auto text-base relative"
             >
                 {/* Scrollable output */}
-                <div className="px-2 sm:px-5 mt-2 sm:mt-4 space-y-1 sm:space-y-2 text-[11px] sm:text-[15px] whitespace-pre-wrap">
+                <div className="px-3 sm:px-5 mt-3 sm:mt-4 space-y-1.5 sm:space-y-2 text-[12px] sm:text-[15px] whitespace-pre-wrap">
                     {history.map((item) => {
                         if (item.type === "command") {
                             return (
@@ -166,13 +173,14 @@ const Terminal = forwardRef(function Terminal({ setInfo, onShowInfoMobile, onCom
                                 <button
                                     key={item.id}
                                     onClick={onShowInfoMobile}
-                                    className="lg:hidden mt-2 text-xs px-3 py-1.5
-                                        border border-[#f59e0b]/40 rounded-md bg-[#18181b]
-                                        text-[#f59e0b] hover:bg-[#292524]
-                                        active:bg-[#292524]
-                                        transition-colors font-medium"
+                                    className="lg:hidden mt-3 mb-1 text-xs px-4 py-2
+                                        border border-[#f59e0b]/50 rounded-lg bg-[#f59e0b]/10
+                                        text-[#f59e0b] hover:bg-[#f59e0b]/20
+                                        active:bg-[#f59e0b]/25
+                                        transition-colors font-semibold
+                                        flex items-center gap-1.5"
                                 >
-                                    View details →
+                                    <span>📄</span> View details →
                                 </button>
                             );
                         }
@@ -182,12 +190,12 @@ const Terminal = forwardRef(function Terminal({ setInfo, onShowInfoMobile, onCom
                 </div>
 
                 {isScrollLocked && (
-                    <div className="px-4 mt-2 text-xs text-[#71717a] italic">
+                    <div className="px-3 sm:px-4 mt-2 text-xs text-[#71717a] italic">
                         — scroll locked —
                     </div>
                 )}
 
-                <div className="px-2 sm:px-5 pb-3 sm:pb-4">
+                <div className="px-3 sm:px-5 pb-3 sm:pb-4">
                     <TerminalInput onCommand={runCommand} />
                 </div>
             </div>

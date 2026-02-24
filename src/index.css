@@ -126,4 +126,21 @@ body::before {
     .whitespace-pre-wrap {
         overflow-x: auto;
     }
+
+    /* Prevent rubber-banding / bounce on iOS */
+    html, body {
+        overscroll-behavior: none;
+    }
+
+    /* Better tap targets on mobile */
+    button {
+        min-height: 32px;
+    }
+}
+
+/* Use dvh on mobile for proper viewport height */
+@supports (height: 100dvh) {
+    .h-\[100dvh\] {
+        height: 100dvh;
+    }
 }

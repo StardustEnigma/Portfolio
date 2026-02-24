@@ -78,10 +78,10 @@ export default function App() {
     }
 
     return (
-        <div className="h-screen flex flex-col relative z-10">
+        <div className="h-[100dvh] flex flex-col relative z-10">
 
             {/* ===== TOP IDE HEADER ===== */}
-            <div className="h-12 sm:h-12 px-3 sm:px-4 flex items-center justify-between
+            <div className="h-10 sm:h-12 px-3 sm:px-4 flex items-center justify-between
                     border-b border-[#27272a]/50
                     bg-[#0e0e11]/70 backdrop-blur-xl text-xs sm:text-sm shrink-0
                     relative z-50 overflow-visible">
@@ -93,16 +93,18 @@ export default function App() {
                         <span className="w-3 h-3 rounded-full bg-[#fbbf24]/80" />
                         <span className="w-3 h-3 rounded-full bg-[#34d399]/80" />
                     </div>
+                    {/* Mobile branding */}
+                    <span className="sm:hidden text-[#f59e0b] font-semibold text-sm">{'{ '}<span className="text-[#e4e4e7]">AM</span><span className="text-[#c084fc]">{' }'}</span></span>
                     <span className="text-[#e4e4e7] font-semibold truncate hidden sm:inline">Atharva_Mandle</span>
                 </div>
 
-                {/* Command pills — centered */}
-                <div className="flex-1 flex justify-center">
+                {/* Command pills — desktop only in header */}
+                <div className="hidden sm:flex flex-1 justify-center">
                     <CommandPills onRun={handleFileClick} />
                 </div>
 
-                {/* Right spacer for balance */}
-                <div className="hidden sm:flex items-center gap-2 shrink-0">
+                {/* Right side */}
+                <div className="flex items-center gap-2 shrink-0">
                     <span className="text-[#52525b] text-[11px]">Portfolio IDE</span>
                 </div>
             </div>
@@ -114,10 +116,10 @@ export default function App() {
                 <ActivityBar />
 
                 {/* Workspace area */}
-                <div className="flex-1 p-1.5 sm:p-3 md:p-4 overflow-hidden">
-                    <div className="relative h-full rounded-lg sm:rounded-xl border border-[#27272a]/40
+                <div className="flex-1 p-0 sm:p-3 md:p-4 overflow-hidden">
+                    <div className="relative h-full sm:rounded-xl sm:border sm:border-[#27272a]/40
                           bg-[#0e0e11]/40 backdrop-blur-xl
-                          flex gap-2 sm:gap-4 p-1.5 sm:p-3 md:p-4 overflow-hidden">
+                          flex gap-0 sm:gap-4 p-0 sm:p-3 md:p-4 overflow-hidden">
 
                         {/* Explorer */}
                         <div className="hidden md:block w-64 shrink-0">
@@ -133,6 +135,7 @@ export default function App() {
                                 setInfo={handleSetInfo}
                                 onShowInfoMobile={() => setShowInfoMobile(true)}
                                 onCommand={handleCommandWithTabs}
+                                onPillRun={handleFileClick}
                                 ref={runCommandRef}
                             />
                         </div>
@@ -154,12 +157,12 @@ export default function App() {
                         {/* Info Panel (Mobile Overlay) */}
                         {showInfoMobile && (
                             <div
-                                className="absolute inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
+                                className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm lg:hidden"
                                 onClick={() => setShowInfoMobile(false)}
                             >
                                 <div
                                     className="absolute right-0 top-0 h-full w-full sm:w-[85%]
-                                    bg-[#111113]/90 backdrop-blur-xl border-l border-[#27272a]/50 animate-slide-in"
+                                    bg-[#111113]/95 backdrop-blur-xl border-l border-[#27272a]/50 animate-slide-in"
                                     onClick={(e) => e.stopPropagation()}
                                 >
                                     <InfoPanel
