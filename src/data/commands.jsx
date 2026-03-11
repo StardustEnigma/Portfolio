@@ -287,8 +287,8 @@ const COMMANDS = {
     resume: () => {
         // Trigger download in the browser
         const link = document.createElement("a");
-        link.href = "/Atharva_Mandle_Resume(New).pdf";
-        link.download = "Atharva_Mandle_Resume(New).pdf";
+        link.href = "/Atharva_Mandle_Resume.pdf";
+        link.download = "Atharva_Mandle_Resume.pdf";
         link.target = "_blank";
         link.rel = "noreferrer";
         document.body.appendChild(link);
